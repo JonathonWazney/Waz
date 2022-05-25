@@ -1,6 +1,5 @@
 require('dotenv').config();
 const express = require('express');
-const { send } = require('express/lib/response');
 const app = express();
 const db = require('./db/pool');
 app.use(express.json());
@@ -10,7 +9,7 @@ app.use(express.static('frontend'));
 app.get('/api/list/:id', async (req,res)=>{
     try {
         let id = req.params.id
-        let data = await db.query('SELECT task FROM list WHERE userid = $1', [id])
+        let data = await db.query('SELECT list_id,task FROM list WHERE userid = $1', [id])
         res.json(data.rows)
     } catch (error) {
         console.log(error.message)
@@ -78,7 +77,7 @@ app.delete('/api/list', async (req,res) =>{
     try {
         let id = req.body.list_id
         await db.query('DELETE FROM list WHERE list_id = $1',[id])
-        res.send('deleted')
+        res.json('deleted')
     } catch (error) {
         console.log(error.message)
         res.send(error.message)   

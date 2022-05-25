@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="front.js"></script>
+    <script defer src="front.js"></script>
     <link rel="stylesheet" href="main.css">
     <title>HOME LIST</title>
 </head>
@@ -21,18 +21,23 @@
   <section class="userInput">
     <div class="col">
         <p>Add new user</p>
-        <input type="text" value="USERNAME">
-        <button>Submit</button>
+        <input id="newuser" type="text" ><br>
+        <button class="newuser">Submit</button>
     </div>
     
     <div class="col">
-        <button>Post</button>
-        <input type="text">
+        <button id="post">Post</button>
+        <input id="newtask" type="text">
     </div>
  </section>
  <section class="userList">
- <div class="todolist">to do list.</div>
- <select id="user" onchange="change()">
+ <div class="todolist">to do list.
+     <ul class="listItems">
+      
+     </ul>
+</div>
+ 
+ <select id="user" >
      
  </select>
  <button class="btn">LIST</button>
